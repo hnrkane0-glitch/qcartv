@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QuickCart — Run your entire business from one platform</title>
+<meta name="description" content="Point of sale, inventory, accounting, HR, hotel, hospital, lounge and more. Pick only the modules you need. Works offline.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4l13 24H3z'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/qc-theme.css">
+<style>
+/* ── LANDING-ONLY STYLES (login modal + a few layout bits) ── */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:200;padding:16px}.modal-bg.open{display:flex}
+.modal{background:var(--bg);width:100%;max-width:400px;padding:24px;position:relative;max-height:92vh;overflow:auto}
+.modal-close{position:absolute;right:12px;top:12px;border:0;background:none;font-size:16px;color:var(--fg3);cursor:pointer}
+.reg-header h2{font-size:20px;margin:0 0 4px}.reg-header p{margin:0 0 16px;color:var(--fg3);font-size:14px}
+.reg-tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:16px}.reg-tab{border:0;background:none;padding:8px 10px;font-size:14px;color:var(--fg3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;box-shadow:none!important}.reg-tab.on{color:var(--fg);border-bottom-color:#fd8c73;font-weight:600}
+.reg-pane{display:none}.reg-pane.on{display:block}.ff{margin-bottom:12px}.ff label{display:block;margin-bottom:4px}.ff input{width:100%}
+.reg-cta{width:100%;padding:9px!important;margin-top:4px}.reg-err{display:none;background:var(--err-bg);color:var(--err);border:1px solid #f3c1c5;padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:12px}.reg-success{display:none;background:var(--ok-bg);color:var(--ok);padding:8px 12px;border-radius:6px;font-size:13px;margin-bottom:12px}
+.divider{text-align:center;color:var(--fg4);font-size:12px;margin:14px 0}
+.price-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.steps{counter-reset:s}.steps .gh-cell::before{counter-increment:s;content:counter(s);display:inline-flex;width:24px;height:24px;border-radius:50%;border:1px solid var(--line2);align-items:center;justify-content:center;font-size:12px;font-weight:600;margin-bottom:12px}
+</style></head>
+<body class="public">
+<header class="gh-nav"><div class="in">
+  <a class="gh-brand" href="/"><i></i>QuickCart</a>
+  <nav class="gh-links"><a href="/features">Features</a><a href="#industries">Industries</a><a href="/pricing">Pricing</a><a href="/how-it-works">How it works</a><a href="/faq">FAQ</a><a href="/contact">Contact</a></nav>
+  <a class="btn btn-sm" href="javascript:openModal('login')" onclick="openModal('login');return false">Log in</a>
+  <a class="btn btn-orange btn-sm" href="/signup">Get started</a>
+</div></header>
+
+<section class="gh-hero"><div class="gh-wrap">
+  <div class="gh-eyebrow"><span style="width:8px;height:8px;border-radius:50%;background:#0a7c42;display:inline-block"></span> Now with Hotel, Hospital &amp; Lounge modules</div>
+  <h1>Run your entire business<br>from one platform.</h1>
+  <p class="lead">Point of sale, inventory, accounting, HR, production and industry tools for retail, hotels, clinics, restaurants and more. Switch on only the modules you need. Keep selling even when the internet is down.</p>
+  <div class="gh-cta"><a class="btn btn-orange" href="/signup">Request your account</a><a class="btn" href="/pricing">Build your package →</a></div>
+  <div style="max-width:760px;margin:56px auto 0" class="gh-term"><span class="d">$</span> quickcart status<br><span class="g">✓</span> POS online · 3 outlets synced · 0 offline sales pending<br><span class="g">✓</span> Books balanced · Trial balance Dr ₦12,480,200 = Cr ₦12,480,200<br><span class="g">✓</span> Stock · 14 transfers received · 2 items below reorder level<br><span class="b">→</span> Fraud rules · 0 critical alerts · last audit 2 min ago</div>
+</div></section>
+
+<section class="gh-sec"><div class="gh-wrap">
+  <h2>Everything a growing business needs.</h2><p class="sub">Start with Core and add modules whenever you grow. Every module talks to the others — a sale updates stock, the ledger, the customer and loyalty points at once.</p>
+  <div class="gh-grid c3">
+    <div class="gh-cell"><span class="ic">🧾</span><h3>Point of Sale</h3><p>Fast checkout, barcode scanning, split payments, thermal receipts, price levels, filters by outlet and category.</p></div>
+    <div class="gh-cell"><span class="ic">📡</span><h3>Works offline</h3><p>Sell with no internet. Sales queue on the device and sync automatically, marked with an offline badge in reports.</p></div>
+    <div class="gh-cell"><span class="ic">📒</span><h3>Real accounting</h3><p>Double-entry ledger, books of account, receivables, payables, budgets, P&amp;L, balance sheet and VAT.</p></div>
+    <div class="gh-cell"><span class="ic">📦</span><h3>Advanced inventory</h3><p>Stock by outlet, transfers, purchase orders, batches &amp; expiry, counts, reorder intelligence.</p></div>
+    <div class="gh-cell"><span class="ic">👥</span><h3>HR &amp; attendance</h3><p>Staff records, biometric devices, shifts, leave, payroll with commission and an admin-only audit trail.</p></div>
+    <div class="gh-cell"><span class="ic">🛡️</span><h3>Security &amp; fraud detection</h3><p>Rules for voids, discounts, after-hours sales and shrinkage. Risk scores per staff. Tamper-proof logs.</p></div>
+  </div>
+</div></section>
+
+<section class="gh-sec alt" id="industries"><div class="gh-wrap">
+  <h2>Built for your industry.</h2><p class="sub">Not a one-size-fits-all till. Add the industry module that fits how you work.</p>
+  <div class="gh-grid c4">
+    <div class="gh-cell"><span class="ic">🏪</span><h3>Retail &amp; supermarkets</h3><p>Wholesale tiers, loyalty, multi-outlet stock and price profiles.</p></div>
+    <div class="gh-cell"><span class="ic">🏨</span><h3>Hotels</h3><p>Rooms, reservations, folios, housekeeping, ADR and occupancy.</p></div>
+    <div class="gh-cell"><span class="ic">🏥</span><h3>Hospitals &amp; labs</h3><p>Patient records, medical history, lab results, pharmacy and wards.</p></div>
+    <div class="gh-cell"><span class="ic">🍸</span><h3>Lounges &amp; restaurants</h3><p>Tables, open tabs, reservations, menu margins and shift reports.</p></div>
+    <div class="gh-cell"><span class="ic">💈</span><h3>Salons &amp; services</h3><p>Bookings, providers, packages, commissions and reminders.</p></div>
+    <div class="gh-cell"><span class="ic">🏭</span><h3>Manufacturers &amp; bakeries</h3><p>Recipes, production orders, raw materials, costing and MRP.</p></div>
+    <div class="gh-cell"><span class="ic">🎓</span><h3>Schools &amp; training</h3><p>Services, invoicing and recurring fees with receipts.</p></div>
+    <div class="gh-cell"><span class="ic">🌐</span><h3>Online sellers</h3><p>Storefront, page editor and a custom domain on one stock pool.</p></div>
+  </div>
+</div></section>
+
+<section class="gh-sec"><div class="gh-wrap">
+  <h2>Pay only for what you use.</h2><p class="sub">Choose modules on the pricing page and see your total instantly. Annual billing saves 17%.</p>
+  <div class="gh-grid c2"><div class="gh-cell"><h3>QuickCart Core — ₦15,000 / month</h3><p>POS, products, orders, inventory, staff roles, offline selling, help centre.</p><div style="margin-top:16px"><a class="btn btn-orange" href="/pricing">Build your package</a></div></div>
+  <div class="gh-cell"><div class="price-row"><span>Accounting &amp; Books</span><b>₦10,000</b></div><div class="price-row"><span>Advanced Inventory</span><b>₦8,000</b></div><div class="price-row"><span>HR, Attendance &amp; Payroll</span><b>₦8,000</b></div><div class="price-row"><span>Hotel / Hospital / Lounge</span><b>from ₦12,000</b></div></div></div>
+</div></section>
+
+<section class="gh-sec alt"><div class="gh-wrap">
+  <h2>How you get started.</h2><p class="sub">No card. No instant sign-up. A real person helps you choose.</p>
+  <div class="gh-grid c3 steps"><div class="gh-cell"><h3>Tell us about your business</h3><p>Fill the short request form. We contact you on phone or WhatsApp.</p></div><div class="gh-cell"><h3>We agree your modules</h3><p>You pick the features you need. We send an invoice.</p></div><div class="gh-cell"><h3>Go live</h3><p>After payment we create your account and send your login details. You change your password in Settings.</p></div></div>
+</div></section>
+
+<section class="gh-sec"><div class="gh-wrap" style="text-align:center"><h2>Ready when you are.</h2><p class="sub" style="margin:0 auto 28px">Join businesses that run on QuickCart every day.</p><div class="gh-cta"><a class="btn btn-orange" href="/signup">Request your account</a><a class="btn" href="/contact">Talk to us</a></div></div></section>
+
+<footer class="gh-foot"><div class="gh-wrap"><div class="cols"><div><a class="gh-brand" href="/"><i></i>QuickCart</a><p style="margin-top:12px;max-width:280px">One platform for point of sale, stock, books and people — for every kind of business.</p></div>
+<div><h5>Product</h5><ul><li><a href="/features">Features</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/demo">Demo</a></li><li><a href="/how-it-works">How it works</a></li></ul></div>
+<div><h5>Company</h5><ul><li><a href="/contact">Contact</a></li><li><a href="/faq">FAQ</a></li></ul></div>
+<div><h5>Legal</h5><ul><li><a href="/terms">Terms</a></li><li><a href="/privacy">Privacy</a></li></ul></div></div><div>© <script>document.write(new Date().getFullYear())</script> QuickCart. All rights reserved.</div></div></footer>
+
+<div class="modal-bg" id="reg-modal"><div class="modal">
+  <button class="modal-close" onclick="closeModal()">✕</button>
+  <div class="reg-header"><h2 id="modal-title">Owner Login</h2><p id="modal-sub">Log in to your QuickCart dashboard</p></div>
+  <div class="reg-tabs"><button class="reg-tab on" id="rtab-login" onclick="regTab('login')">Owner</button><button class="reg-tab" id="rtab-staff" onclick="regTab('staff')">Staff</button></div>
+  <div class="reg-pane on" id="rpane-login"><div class="reg-err" id="login-err"></div>
+    <div class="ff"><label>Email or username</label><input type="text" id="login-user" placeholder="you@company.com" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <div class="ff"><label>Password</label><input type="password" id="login-pass" placeholder="Your password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <button class="btn reg-cta" onclick="doLogin()">Log in</button>
+    <div class="divider"><a onclick="showForgotModal()" style="cursor:pointer">Forgot your password?</a></div>
+    <p style="text-align:center;font-size:13px;color:var(--fg3);margin:0">No account yet? <a href="/signup">Request one</a></p></div>
+  <div class="reg-pane" id="rpane-staff"><div class="reg-err" id="staff-err"></div>
+    <div class="ff"><label>Company ID (store email)</label><input type="text" id="staff-company" placeholder="boss@company.com" autocapitalize="off" onkeydown="if(event.key==='Enter')doStaffLogin()"></div>
+    <div class="ff"><label>Staff username</label><input type="text" id="staff-user" placeholder="Username your boss created" autocapitalize="off" onkeydown="if(event.key==='Enter')doStaffLogin()"></div>
+    <div class="ff"><label>Password</label><input type="password" id="staff-pass" placeholder="Your password" onkeydown="if(event.key==='Enter')doStaffLogin()"></div>
+    <button class="btn reg-cta" onclick="doStaffLogin()">Staff log in</button>
+    <p style="text-align:center;font-size:12px;color:var(--fg3);margin:12px 0 0">Company ID is the email your boss used for QuickCart.</p></div>
+</div></div>
+<div class="modal-bg" id="forgot-modal">
+  <div class="modal" style="max-width:400px;">
+    <button class="modal-close" onclick="document.getElementById('forgot-modal').classList.remove('open')">✕</button>
+    <div class="reg-header"><h2>Reset Password</h2><p>Enter your email to get a reset link</p></div>
+    <div class="reg-body">
+      <div class="reg-err" id="forgot-err2"></div>
+      <div class="reg-success" id="forgot-success2"></div>
+      <div class="ff"><label>Email Address</label><input type="email" id="forgot-email2" placeholder="your@email.com" onkeydown="if(event.key==='Enter')sendForgot()"></div>
+      <button class="reg-cta" onclick="sendForgot()">Send Reset Link →</button>
+      <div style="text-align:center;margin-top:12px;"><a onclick="document.getElementById('forgot-modal').classList.remove('open');document.getElementById('reg-modal').classList.add('open');" style="font-size:12px;color:var(--accent);cursor:pointer;">← Back to Login</a></div>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes card-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}  }
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+</style>
+
+
+<script src="qc-db.js"></script>
+<script src="assets/platform.js"></script>
+<script>
+var FIREBASE_ROOT='https://sneakerai-c96f0-default-rtdb.firebaseio.com';
+function qcLock(on){document.documentElement.classList.toggle('modal-lock',on);document.body.classList.toggle('modal-lock',on);}
+function openModal(tab){document.getElementById('reg-modal').classList.add('open');qcLock(true);regTab(tab||'login');}
+function closeModal(){document.getElementById('reg-modal').classList.remove('open');qcLock(false);}
+document.getElementById('reg-modal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+function regTab(name){if(name!=='staff')name='login';document.querySelectorAll('.reg-tab').forEach(function(t){t.classList.remove('on');});document.querySelectorAll('.reg-pane').forEach(function(p){p.classList.remove('on');});document.getElementById('rtab-'+name).classList.add('on');document.getElementById('rpane-'+name).classList.add('on');document.getElementById('modal-title').textContent=name==='staff'?'Staff Login':'Owner Login';document.getElementById('modal-sub').textContent=name==='staff'?'Sign in with your company ID and staff account':'Log in to your QuickCart dashboard';}
+if(location.hash==='#login')openModal('login');
+async function doLogin(){
+  var user=document.getElementById('login-user').value.trim();
+  var pass=document.getElementById('login-pass').value;
+  var errEl=document.getElementById('login-err');
+  errEl.style.display='none';
+  if(!user||!pass){errEl.textContent='Please enter your email and password.';errEl.style.display='block';return;}
+  var btn=document.querySelector('#rpane-login .reg-cta');
+  btn.disabled=true;btn.textContent='Logging in…';
+  try{
+    var r=await fetch('/api/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'login',user:user,pass:pass})});
+    var j={};try{j=await r.json();}catch(x){}
+    var match=j.user;
+    if((j.ok||j.expired)&&match&&j.token){
+      QCDB.clearSession();
+      localStorage.setItem('qc_token',j.token);
+      localStorage.setItem('qc_logged_user',match.username||match.email);
+      localStorage.setItem('qc_sub_plan',match.plan||'starter');
+      localStorage.setItem('qc_sub_email',match.email||'');
+      localStorage.setItem('qc_biz_name',match.businessName||'');
+      QCDB.setSession(match);
+      if(j.needsCard){qcGo('/payment');return;}
+      if(j.expired){errEl.textContent=j.error+' Taking you to renew…';errEl.style.display='block';setTimeout(function(){qcGo('/payment');},1600);return;}
+      qcGo('/dashboard');return;
+    }
+    errEl.textContent=j.error||'Invalid email or password. Please try again.';errEl.style.display='block';
+  }catch(e){errEl.textContent='Login error. Check your connection.';errEl.style.display='block';}
+  btn.disabled=false;btn.textContent='Log In →';
+}
+
+// ─── STAFF LOGIN ─────────────────────────────────────────────────
+async function doStaffLogin(){
+  var errEl=document.getElementById('staff-err');errEl.style.display='none';
+  var btn=document.querySelector('#rpane-staff .reg-cta');
+  btn.disabled=true;btn.textContent='Logging in…';
+  var res=await QCDB.staffLogin(document.getElementById('staff-company').value,document.getElementById('staff-user').value,document.getElementById('staff-pass').value);
+  if(!res.ok){errEl.textContent=res.msg;errEl.style.display='block';btn.disabled=false;btn.textContent='Staff Log In →';return;}
+  QCDB.finishStaffLogin(res);
+  try{sessionStorage.removeItem('qc_landed');}catch(e){}
+  qcGo('/dashboard');
+}
+
+// ─── NAVIGATION HELPER (works both standalone and inside SPA router) ─
+function qcGo(path){
+  // If running inside the SPA router iframe
+  if(window.parent && window.parent !== window && window.parent.qcNavigate){
+    window.parent.qcNavigate(path);
+  } else {
+    // Standalone fallback
+    var map={'/dashboard':'admin.html','/pos':'pos.html','/store':'shop.html?store=admin','/':'landing.html'};
+    window.location.href = map[path] || path.replace('/','') + '.html';
+  }
+}
+
+// ─── FORGOT PASSWORD ─────────────────────────────────────────────
+function showForgotModal(){
+  document.getElementById('reg-modal').classList.remove('open');
+  document.getElementById('forgot-modal').classList.add('open');
+}
+var _fgTimer=null;
+function fgCooldown(btn,secs){
+  clearInterval(_fgTimer);
+  (function tick(){ if(secs<=0){btn.disabled=false;btn.textContent='Send Reset Link →';clearInterval(_fgTimer);return;} btn.disabled=true;btn.textContent='Resend in '+secs+'s'; secs--; })();
+  _fgTimer=setInterval(function(){ if(secs<=0){btn.disabled=false;btn.textContent='Send Reset Link →';clearInterval(_fgTimer);return;} btn.textContent='Resend in '+secs+'s'; secs--; },1000);
+}
+async function sendForgot(){
+  var email=(document.getElementById('forgot-email2').value||'').trim();
+  var errEl=document.getElementById('forgot-err2');var sucEl=document.getElementById('forgot-success2');
+  errEl.style.display='none';sucEl.style.display='none';
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return;}
+  var btn=document.querySelector('#forgot-modal .reg-cta');
+  btn.disabled=true;btn.textContent='Sending…';
+  try{
+    var r=await fetch('/api/forgot-password',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})});
+    var j={};try{j=await r.json();}catch(x){}
+    if(r.ok&&j.ok){
+      sucEl.innerHTML='<strong>Check your inbox</strong><small style="display:block;margin-top:6px;line-height:1.6;">If <b>'+email.replace(/[<>&"]/g,'')+'</b> has a QuickCart account, a reset link is on its way. It works once and expires in 1 hour. Check your spam folder too.</small>';
+      sucEl.style.display='block';fgCooldown(btn,60);return;
+    }
+    if(j.code==='mail_not_configured'){errEl.textContent='Password emails are not switched on for this site yet. Please contact QuickCart support.';}
+    else{errEl.textContent=j.error||'Could not send the email. Please try again.';}
+    errEl.style.display='block';
+  }catch(e){errEl.textContent='Network problem. Check your connection and try again.';errEl.style.display='block';}
+  btn.disabled=false;btn.textContent='Send Reset Link →';
+}
+
+// ─── CHECK IF ALREADY LOGGED IN ───────────────────────────────────
+(function(){
+  var u=localStorage.getItem('qc_logged_user');
+  var p=localStorage.getItem('qc_sub_plan');
+  if(u&&p){
+    var navRight=document.querySelector('.nav-right');
+    if(navRight){
+      navRight.innerHTML='<button onclick="qcGo(\'/dashboard\')" style="background:var(--accent);color:#fff;padding:10px 22px;font-size:12px;font-weight:700;border:none;letter-spacing:-.01em;cursor:pointer;">Go to Dashboard →</button>';
+    }
+  }
+  // Listen for messages from parent router
+  window.addEventListener('message',function(e){
+    if(e.data&&e.data.action==='openLogin') openModal('login');
+    if(e.data&&e.data.action==='openRegister') openModal('register');
+    if(e.data&&e.data.action==='showForgot'){openModal('login');setTimeout(showForgotModal,200);}
+  });
+  // Tell parent our title
+  if(window.parent&&window.parent!==window) window.parent.postMessage({title:'Home'},'*');
+})();
+
+// ─── URL PARAMS (reset token) ──────────────────────────────────────
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  if(params.get('reset_token')||params.get('token')){qcGo('/reset-password');}
+})();
+</script>
+<script src="assets/landing.js"></script>
+<script>
+/* Section links (Features, Pricing, FAQ…) get the same top loading bar as the rest of the site */
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a||a.getAttribute('href').length<2) return;
+  try{QCFlow.start();setTimeout(function(){QCFlow.done();},650);}catch(x){}
+},true);
+</script>
+<script src="assets/platform.js">
+</script>
+<script src="assets/qc-catalog.js"></script><script src="assets/qc-entitle.js"></script>
+</body></html>

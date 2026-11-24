@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pricing — QuickCart</title><meta name="description" content="Build your own package. Pay only for the modules you use.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4l13 24H3z'/%3E%3C/svg%3E"><link rel="stylesheet" href="assets/qc-theme.css">
+<style>
+.pg{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start;padding:40px 0 80px}@media(max-width:960px){.pg{grid-template-columns:1fr}}
+.grp{margin:0 0 28px}.grp h3{font-size:13px;color:var(--fg3);font-weight:600;margin:0 0 8px;text-transform:uppercase;letter-spacing:.04em}
+.mod{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:16px;margin-bottom:8px;cursor:pointer;transition:border-color .12s}.mod:hover{border-color:var(--line2)}.mod.on{border-color:var(--fg);box-shadow:0 0 0 1px var(--fg)}.mod.lock{cursor:default}
+.mod .ck{width:18px;height:18px;border:1px solid var(--line2);border-radius:4px;margin-top:2px;flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--bg)}.mod.on .ck{background:var(--fg);border-color:var(--fg)}
+.mod h4{margin:0;font-size:15px}.mod p{margin:4px 0 0;color:var(--fg2);font-size:13px}.mod .pr{margin-left:auto;text-align:right;white-space:nowrap;font-weight:600;font-variant-numeric:tabular-nums}.mod .pr small{display:block;font-weight:400;color:var(--fg3);font-size:12px}
+.mod ul{margin:8px 0 0;padding-left:16px;color:var(--fg3);font-size:12.5px;display:none}.mod.open ul{display:block}.mod .more{font-size:12px;color:var(--link);margin-top:6px;display:inline-block}
+.sum{position:sticky;top:76px;border:1px solid var(--line);border-radius:12px;background:var(--bg);padding:20px}.sum h3{margin:0 0 12px}.ln{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;color:var(--fg2)}.ln b{color:var(--fg);font-variant-numeric:tabular-nums}.tot{border-top:1px solid var(--line);margin-top:10px;padding-top:12px;font-size:15px}.tot b{font-size:22px;letter-spacing:-.03em}
+.tg{display:inline-flex;border:1px solid var(--line2);border-radius:8px;padding:2px;margin-bottom:14px}.tg button{border:0!important;background:none!important;box-shadow:none!important;padding:5px 12px!important;border-radius:6px!important;font-size:13px!important;color:var(--fg2)!important}.tg button.on{background:var(--fg)!important;color:var(--bg)!important}
+.bd{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 28px}.bd button{font-size:13px!important}
+</style></head><body class="public">
+<header class="gh-nav"><div class="in"><a class="gh-brand" href="/"><i></i>QuickCart</a><nav class="gh-links"><a href="/features">Features</a><a href="/pricing">Pricing</a><a href="/how-it-works">How it works</a><a href="/faq">FAQ</a><a href="/contact">Contact</a></nav><a class="btn btn-sm" href="/login">Log in</a><a class="btn btn-orange btn-sm" href="/signup">Get started</a></div></header>
+<div class="gh-wrap"><div style="padding:64px 0 8px"><h1 style="font-size:44px">Build your package.</h1><p style="color:var(--fg2);font-size:18px;margin:12px 0 0;max-width:640px">Every module has its own price. Tick the ones you need — your total updates instantly. No hidden fees, no card to start.</p></div>
+<div class="pg"><div><div class="qs-k" style="margin:20px 0 8px;font-size:13px;color:var(--fg3)">Start from a template</div><div class="bd" id="bd"></div><div id="list"></div></div>
+<aside class="sum"><h3>Your package</h3><div class="tg"><button id="m1" class="on" onclick="cyc('monthly')">Monthly</button><button id="m2" onclick="cyc('yearly')">Yearly · save 17%</button></div><div id="lines"></div>
+<div class="ln tot"><span>Total <small id="per" style="color:var(--fg3)"></small></span><b id="tt">₦0</b></div><div class="ln" style="font-size:12px"><span>incl. 7.5% VAT</span><span id="vv"></span></div><div id="sv" style="color:var(--ok);font-size:13px;margin:6px 0"></div>
+<a class="btn btn-orange" id="req" style="width:100%;margin-top:12px;text-align:center;padding:10px!important" href="/signup">Request this package</a>
+<p style="font-size:12px;color:var(--fg3);margin:12px 0 0">You pay after we talk and agree your modules. Prices in Nigerian Naira.</p></aside></div></div>
+<script src="assets/qc-catalog.js"></script><script>
+var C=QC_CATALOG,sel={core:true},cycle='monthly',open={};function $(i){return document.getElementById(i)}function fm(n){return '₦'+Math.round(n).toLocaleString('en-NG')}
+try{var q=new URLSearchParams(location.search).get('modules');if(q)q.split(',').forEach(function(i){if(C.byId[i])sel[i]=true;});}catch(e){}
+$('bd').innerHTML=C.BUNDLES.map(function(b){return '<button class="btn btn-sm" onclick="bundle(\''+b.id+'\')">'+b.name+'</button>'}).join('');
+function bundle(id){var b=C.BUNDLES.filter(function(x){return x.id===id})[0];sel={core:true};b.modules.forEach(function(m){sel[m]=true});draw();}
+function tog(id){if(id==='core')return;sel[id]=!sel[id];draw();}
+function draw(){var h='';C.GROUPS.forEach(function(g){var ms=C.MODULES.filter(function(m){return m.group===g});if(!ms.length)return;h+='<div class="grp"><h3>'+g+'</h3>'+ms.map(function(m){var on=sel[m.id];return '<div class="mod '+(on?'on ':'')+(m.base?'lock ':'')+(open[m.id]?'open':'')+'" onclick="tog(\''+m.id+'\')"><span class="ck">'+(on?'✓':'')+'</span><div style="flex:1"><h4>'+m.icon+' '+m.name+(m.base?' <span class="qs-pill" style="font-size:11px;background:var(--bg3);padding:1px 8px">Required</span>':'')+'</h4><p>'+m.desc+'</p><ul>'+m.features.map(function(f){return '<li>'+f+'</li>'}).join('')+'</ul><a class="more" onclick="event.stopPropagation();open[\''+m.id+'\']=!open[\''+m.id+'\'];draw()">'+(open[m.id]?'Hide details':'What’s included')+'</a></div><div class="pr">'+fm(m.price)+'<small>/ month</small></div></div>'}).join('')+'</div>'});$('list').innerHTML=h;
+ var ids=Object.keys(sel).filter(function(k){return sel[k]}),qt=C.quote(ids,cycle);$('lines').innerHTML=qt.lines.map(function(l){return '<div class="ln"><span>'+l.name+'</span><b>'+fm(l.monthly)+'</b></div>'}).join('');
+ $('tt').textContent=fm(qt.total);$('per').textContent=cycle==='yearly'?'per year':'per month';$('vv').textContent=fm(qt.vat);$('sv').textContent=qt.saved?'You save '+fm(qt.saved)+' a year':'';
+ $('req').href='/signup?modules='+ids.filter(function(i){return i!=='core'}).join(',');}
+function cyc(c){cycle=c;$('m1').classList.toggle('on',c==='monthly');$('m2').classList.toggle('on',c==='yearly');draw();}
+draw();
+</script></body></html>
